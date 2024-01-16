@@ -9,3 +9,10 @@ This Rust project implements a simple account management system, providing basic
 - Balance Inquiry:\*\* Prints on the console the current balance and the account holder.
 
 ## Including
+
+Include the library as a dependency to your project by adding the following lines to your **Cargo.toml** file:
+
+```toml
+[dependencies]
+prettytable-rs = "^0.10"
+```
