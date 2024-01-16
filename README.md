@@ -1,3 +1,6 @@
+>[!NOTE]
+>This is just a simple practice
+
 # Simple Rust Account Manager
 
 This Rust project implements a simple account management system, providing basic functionality such as deposit, balance withdrawal and balance inquiry. The `Account` structure represents an account with an account holder and a balance.
@@ -16,3 +19,4 @@ Include the library as a dependency to your project by adding the following line
 [dependencies]
 prettytable-rs = "^0.10"
 ```
+
