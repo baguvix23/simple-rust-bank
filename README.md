@@ -16,3 +16,5 @@ Include the library as a dependency to your project by adding the following line
 [dependencies]
 prettytable-rs = "^0.10"
 ```
+>[!NOTE]
+>This is just a simple practice
