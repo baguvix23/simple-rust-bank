@@ -1,3 +1,5 @@
+use std::io;
+
 use prettytable::{row, Table};
 
 extern crate prettytable;
@@ -18,7 +20,7 @@ impl Account {
                 balance: self.balance - amount,
             }
         } else {
-            println!("Insufficient balance");
+            println!("Insufficient balance, the current cash is {}", self.balance);
             self
         }
     }
@@ -38,18 +40,74 @@ impl Account {
 }
 
 fn main() {
-    let mut owner = Account {
-        holder: "Alejandro".to_string(),
-        balance: 700.0,
-    };
+    loop {
+        let mut owner = Account {
+            holder: "Alejandro".to_string(),
+            balance: 700.0,
+        };
 
-    //deposit
-    owner.deposit_balance(200.0);
-    owner.check_balance();
+        println!("Select an option");
+        println!("1.Deposit amount ");
+        println!("2.Withdraw amount");
+        println!("3.Exit ");
 
-    // println!("======= --- ======");
-    //
-    //withdraw
-    owner = owner.withdraw_balance(400.0);
-    owner.check_balance()
+        let mut menu = String::new();
+        io::stdin()
+            .read_line(&mut menu)
+            .expect("Failed to read line");
+
+        let menu: usize = match menu.trim().parse() {
+            Ok(num) => num,
+            Err(_) => {
+                println!("Please enter a valid number");
+                continue;
+            }
+        };
+
+        match menu {
+            1 => {
+                //deposit
+                println!("Enter your amount to deposit");
+                let deposit_amount: f32 = read_input();
+                owner.deposit_balance(deposit_amount);
+                owner.check_balance();
+            }
+            2 => {
+                //withdraw_amount
+                println!("Enter the amount to withdraw:");
+                let withdraw_amount: f32 = read_input();
+                owner = owner.withdraw_balance(withdraw_amount);
+                owner.check_balance()
+            }
+            3 => {
+                println!("Exit program");
+                break;
+            }
+            _ => {
+                println!("Invalid option");
+            }
+        }
+
+        println!("======= --- ======");
+        //withdraw
+    }
 }
+
+fn read_input() -> f32 {
+    let mut input = String::new();
+    io::stdin()
+        .read_line(&mut input)
+        .expect("Failed to read line");
+
+    input
+        .trim()
+        .parse()
+        .expect("please enter your number valid")
+}
+
+// fn option() {
+//     let mut options = String::new();
+//     io::stdin()
+//         .read_line(&mut options)
+//         .expect("Failded to read line");
+// }
