@@ -40,12 +40,11 @@ impl Account {
 }
 
 fn main() {
+    let mut owner = Account {
+        holder: "Alejandro".to_string(),
+        balance: 700.0,
+    };
     loop {
-        let mut owner = Account {
-            holder: "Alejandro".to_string(),
-            balance: 700.0,
-        };
-
         println!("Select an option");
         println!("1.Deposit amount ");
         println!("2.Withdraw amount");
@@ -89,7 +88,6 @@ fn main() {
         }
 
         println!("======= --- ======");
-        //withdraw
     }
 }
 
